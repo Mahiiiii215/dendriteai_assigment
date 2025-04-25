@@ -1,0 +1,55 @@
+{
+  "target_variable": "species",
+  "prediction_type": "classification",
+  "features": [
+    {
+      "name": "sepal_length",
+      "imputation_method": "mean"
+    },
+    {
+      "name": "sepal_width",
+      "imputation_method": "median"
+    },
+    {
+      "name": "petal_length",
+      "imputation_method": "mean"
+    },
+    {
+      "name": "petal_width",
+      "imputation_method": "mode"
+    }
+  ],
+  "feature_reduction": {
+    "method": "pca",
+    "n_components": 2
+  },
+  "algorithms": [
+    {
+      "name": "logistic_regression",
+      "is_selected": true,
+      "hyperparameters": {
+        "C": [0.1, 1.0, 10.0],
+        "penalty": ["l2"],
+        "solver": ["liblinear", "saga"]
+      }
+    },
+    {
+      "name": "random_forest",
+      "is_selected": true,
+      "hyperparameters": {
+        "n_estimators": [100, 200],
+        "max_depth": [null, 5, 10],
+        "min_samples_split": [2, 5]
+      }
+    },
+    {
+      "name": "svm",
+      "is_selected": false,
+      "hyperparameters": {
+        "C": [0.1, 1.0, 10.0],
+        "kernel": ["linear", "rbf"],
+        "gamma": ["scale", "auto"]
+      }
+    }
+  ]
+}
